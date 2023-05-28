@@ -23,7 +23,6 @@ const FormPage = () => {
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const {dispatch} = useContext(AuthContext);
-
     const handleLogin =() => {
         const {username,password} = form.getFieldsValue()
         let user = {
@@ -31,7 +30,7 @@ const FormPage = () => {
           password
         }
         dispatch({type:'LOGIN',payload:user})
-        if(username === 'admin' && password === 'Qwerty1234$'){
+        if(username === process.env.REACT_APP_USERNAME && password === process.env.REACT_APP_PASSWORD){
             navigate('/main')
         }else {
             alert('error')
